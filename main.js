@@ -1,3 +1,4 @@
+//Daten für Salzburg 
 let salzburg = {
     lat: 47.8095,
     lng: 13.0550,
@@ -11,7 +12,6 @@ let map = L.map('map').setView([salzburg.lat, salzburg.lng], 8);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
-
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -21,11 +21,14 @@ L.control.scale({
     imperial: false
 }).addTo(map);
 
-let themaLayer = {
-    Seen: L.featureGroup().addTo(map),
-}
 
-//GEOJSON reinladen
+//Thema-Layer Seen 
+
+let themaLayer = {
+    Seen: L.featureGroup()
+};
+
+//GEOJSON in Themalayer See reinladen
 fetch('WIS_Seen/Seen.geojson')
     .then(response => response.json())
     .then(data => {
@@ -33,31 +36,49 @@ fetch('WIS_Seen/Seen.geojson')
         L.geoJSON(data,
             {
                 onEachFeature: onEachFeature
-            }).addTo(map);
+            }).addTo(themaLayer.Seen);
     })
     .catch(error => console.error('Error loading the GeoJSON data:', error));
 
-
 // Hintergrundlayer
+
 L.control.layers({
-    "BasemapAT Grau": L.tileLayer.provider("BasemapAT.grau").addTo(map),
-    "BasemapAT Standard": L.tileLayer.provider("BasemapAT.basemap"),
-    "BasemapAT High-DPI": L.tileLayer.provider("BasemapAT.highdpi"),
+    "BasemapAT Standard": L.tileLayer.provider("BasemapAT.basemap").addTo(map),
     "BasemapAT Gelände": L.tileLayer.provider("BasemapAT.terrain"),
-    "BasemapAT Oberfläche": L.tileLayer.provider("BasemapAT.surface"),
     "BasemapAT Orthofoto beschriftet": L.layerGroup([
         L.tileLayer.provider("BasemapAT.orthofoto"),
         L.tileLayer.provider("BasemapAT.overlay")
     ]),
 }, {
     "Seen": themaLayer.Seen,
-})
-    .addTo(map);
+}).addTo(map);
+
+
+//Maßstab
+L.control.scale({
+    imperial: false,
+}).addTo(map);
+
 
 //Pop-up
+
+L.geoJSON(jsondata, {}).bindPopup(function (layer) {
+    return `
+  <h2>{layer.feature.properties}</h2>
+    <ul>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    </li>
+
+    </ul> 
+    `;
+}).addTo(map);
+
+
 function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.NAME) {
         layer.bindPopup(feature.properties.NAME);
     }
 }
-
