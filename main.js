@@ -25,8 +25,10 @@ L.control.scale({
 //Thema-Layer Seen 
 
 let themaLayer = {
-    Seen: L.featureGroup()
+    Seen: L.featureGroup().addTo(map),
+    Badestellen: L.featureGroup().addTo(map),
 };
+
 
 //GEOJSON in Themalayer See reinladen
 fetch('WIS_Seen/Seen.geojson')
@@ -40,6 +42,17 @@ fetch('WIS_Seen/Seen.geojson')
     })
     .catch(error => console.error('Error loading the GeoJSON data:', error));
 
+//JSON in Themlayer Badestellen reinladen
+fetch('WIS_Badestellen/Badestellen.geojson')
+    .then(response => response.json())
+    .then(data => {
+        // Füge die GeoJSON-Daten zur Karte hinzu
+        L.geoJSON(data,
+            {
+                onEachFeature: onEachFeature
+            }).addTo(themaLayer.Badestellen);
+    })
+    .catch(error => console.error('Error loading the GeoJSON data:', error));
 // Hintergrundlayer
 
 L.control.layers({
@@ -51,7 +64,9 @@ L.control.layers({
     ]),
 }, {
     "Seen": themaLayer.Seen,
-}).addTo(map);
+    "Badestellen": themaLayer.Badestellen
+})
+    .addTo(map);
 
 
 //Maßstab
@@ -60,7 +75,7 @@ L.control.scale({
 }).addTo(map);
 
 
-//Pop-up
+//Pop-up für Seen
 
 function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.NAME) {
@@ -76,6 +91,22 @@ function onEachFeature(feature, layer) {
 }
 
 
+//Pop-up für Badestellen 
+
+function onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.NAME) {
+        let popupContent =
+            `<h2>${feature.properties.NAME}</h2>
+            <ul>
+                <li> Größe in km2: ${feature.properties.FLAECHEKM2 || 'N/A'}</li>
+                <li>Höhe: ${feature.properties.HOEHE || 'unbekannt'}</li>
+                <li> Andere Bezeichnung: ${feature.properties.NAMEALIAS || 'N/A'}</li>
+                </ul>`;
+        layer.bindPopup(popupContent);
+    }
+}
 
 
-// Themalayer Badestellen
+//Badestellen müssen noch richtig rein geladen werden
+//Temperaturen müssen noch reingeladen werden
+//Almenweg reinladen
