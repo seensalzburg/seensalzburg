@@ -108,5 +108,6 @@ function onEachFeature(feature, layer) {
 
 
 //Badestellen müssen noch richtig rein geladen werden
-//Temperaturen müssen noch reingeladen werden
 //Almenweg reinladen
+//Kommastellen im Pop Up Seen auf 2 Kommas stellen
+//Wetterdienst reinladen
