@@ -62,23 +62,20 @@ L.control.scale({
 
 //Pop-up
 
-L.geoJSON(jsondata, {}).bindPopup(function (layer) {
-    return `
-  <h2>{layer.feature.properties}</h2>
-    <ul>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    <li> </li>
-    </li>
-
-    </ul> 
-    `;
-}).addTo(map);
-
-
 function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.NAME) {
-        layer.bindPopup(feature.properties.NAME);
+        let popupContent =
+            `<h2>${feature.properties.NAME}</h2>
+            <ul>
+                <li> Größe in km2: ${feature.properties.FLAECHEKM2 || 'N/A'}</li>
+                <li>Höhe: ${feature.properties.HOEHE || 'unbekannt'}</li>
+                <li> Andere Bezeichnung: ${feature.properties.NAMEALIAS || 'N/A'}</li>
+                </ul>`;
+        layer.bindPopup(popupContent);
     }
 }
+
+
+
+
+// Themalayer Badestellen
