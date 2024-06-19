@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #dee2ff;
+    max-width: 1280px;
+    margin: auto;
+}
+
+header>img {
+    max-width: 100%;
+}
+
+header a img {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    margin-top: -50px
+}
+
+a {
+    color: black;
+}
+
+main {
+    max-width: 1024px;
+    margin: auto;
+    margin-top: -0px;
+    border-left: 1px dashed darkslateblue;
+    border-right: 1px dashed darkslateblue;
+    border-bottom: 1px dashed darkslateblue;
+}
+
+
+header h2 {
+    margin: 0;
+}
+
+header nav {
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-top: 1em;
+}
+
+article {
+    padding: 1em;
+}
+
+#map {
+    width: 90%;
+    height: 600px;
+    border: 1px solid lightseagreen;
+    margin: auto;
+}
+
+footer {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+}
+
+footer nav {
+    display: inline-block;
+
+    header img,
+    figure>img,
+    #map {
+        box-shadow:
+            0 4px 8px 0 rgba(199, 231, 255, 0.24),
+            0 6px 20px 0 rgba(199, 231, 255, 0.24);
+    }
+}
+
+header img,
+figure>img,
+#map {
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
