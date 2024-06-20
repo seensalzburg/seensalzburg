@@ -108,6 +108,5 @@ function onEachFeature(feature, layer) {
 
 
 //Badestellen müssen noch richtig rein geladen werden
-//Almenweg reinladen
 //Kommastellen im Pop Up Seen auf 2 Kommas stellen
-//Wetterdienst reinladen
+//User Bild - Icon im Tab
