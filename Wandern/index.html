@@ -67,24 +67,11 @@
             Ferienregionen: vom Tennengebirge über die Region Hochkönig, die Salzburger Sonnenterrasse, das Gasteinertal
             und das Großarltal, bis hin zur Salzburger Sportwelt und Obertauern.</p>
 
-        <div class="summary">
-            <div class="summary-badge">
-                <i class="fas fa-walking"></i> 358,7 km
-            </div>
-            <div class="summary-badge">
-                <i class="fas fa-sort-amount-up-alt"></i> 20.158 hm
-            </div>
-            <div class="summary-badge">
-                <i class="fas fa-sort-amount-down-alt"></i> 20.158 hm
-            </div>
-            <div class="summary-badge">
-                <i class="fa-solid fa-heart-pulse"></i> mittelschwierig
-            </div>
-        </div>
-
         <article>
             <div id="map"></div>
+            <p>
             <div id="profile"></div>
+            </p>
         </article>
 
         <p>Die Karte bietet einen ersten Überblick zur Tour. Genauere Informationen und weitere Details zu den einzelnen
@@ -285,26 +272,38 @@
         <div>Urheber:
             <a href="https://www.oebb.at/" target="_blank">ÖBB</a>
         </div>
-
         <hr>
 
+        <h3 id="wetter">Wetter in der Region</h3>
+        <a class="weatherwidget-io" href="https://forecast7.com/de/47d8113d06/salzburg/" data-label_1="Salzburg"
+            data-label_2="Wetter" data-theme="original">Salzburg Wetter</a>
+        <script>
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+        </script><br>
+
+        <a class="weatherwidget-io" href="https://forecast7.com/de/47d3212d80/zell-am-see/" data-label_1="Zell am See"
+            data-label_2="Wetter" data-theme="original">Zell am See Wetter </a>
+        <script>
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+        </script><br>
+
+        <footer>
+            <nav>
+                <i class=" fab fa-github"></i>
+                <a href="https://github.com/seensalzburg/seensalzburg.git">Github</a> |
+            </nav>
+            <strong>Datenquellen:</strong>
+            <nav>
+                <a href="https://www.salzburgerland.com/de/die-25-salzburger-almenweg-etappen/">Salzburger Land</a> |
+                <a href="https://forecast7.com"> forecast7.com</a> |
+                <a href="konzept.pdf">Konzept</a>
+            </nav>
+            <hr>
+            <p><strong>Impressum</strong></p>
+            <p>Anna Gruber, Lea Held, Ernst Schindler</p>
+            <p>Innsbruck, 2024</p>
+        </footer>
     </main>
-    <hr>
-    <footer>
-        <nav>
-            <i class=" fab fa-github"></i>
-            <a href="https://github.com/seensalzburg/seensalzburg.git">Github</a> |
-        </nav>
-        <strong>Datenquellen:</strong>
-        <nav>
-            <a href="https://www.salzburgerland.com/de/die-25-salzburger-almenweg-etappen/">Salzburger Land</a> |
-            <a href="konzept.pdf">Konzept</a>
-        </nav>
-        <hr>
-        <p><strong>Impressum</strong></p>
-        <p>Anna Gruber, Lea Held, Ernst Schindler</p>
-        <p>Innsbruck, 2024</p>
-    </footer>
 </body>
 
 </html>
