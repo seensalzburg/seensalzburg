@@ -49,4 +49,25 @@ let controlElevation = L.control.elevation({
     height: 300,
     theme: "Wanderroute",
 }).addTo(map);
-controlElevation.load("data/almenweg.gpx");
+controlElevation.load("data/track.gpx");
+
+// Laden und Anzeigen der GPX-Daten ohne zusätzliche Marker
+new L.GPX("data/track.gpx", {
+    async: true,
+    polyline_options: {
+        color: 'blue',
+        weight: 3,
+        opacity: 0.75,
+        lineCap: 'round'
+    },
+    marker_options: {
+        startIconUrl: '',
+        endIconUrl: '',
+        shadowUrl: ''
+    },
+    parseElements: ['track']
+}).on('loaded', function (e) {
+    map.fitBounds(e.target.getBounds());
+}).addTo(map).on('addline', function (e) {
+    controlElevation.addData(e.line);
+});
