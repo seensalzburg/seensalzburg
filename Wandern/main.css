@@ -45,32 +45,51 @@ header nav {
 
 article {
     padding: 1em;
+    line-height: 1.5em;
 }
 
 #map {
     width: 90%;
     height: 600px;
-    border: 1px solid lightseagreen;
+    border: 1px solid rgb(0, 0, 0);
     margin: auto;
 }
+
 
 footer {
     font-family: "Roboto", sans-serif;
     font-size: 0.9em;
     margin-top: 0.5em;
+    text-align: center;
 }
 
-footer nav {
-    display: inline-block;
-
-    header img,
-    figure>img,
-    #map {
-        box-shadow:
-            0 4px 8px 0 rgba(199, 231, 255, 0.24),
-            0 6px 20px 0 rgba(199, 231, 255, 0.24);
-    }
+#impressum {
+    font-weight: bold;
 }
+
+
+.inline-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.inline-list li {
+    margin-right: 30px;
+    font-family: "Roboto";
+    font-size: smaller;
+}
+
+
+header img,
+figure>img,
+#map {
+    box-shadow:
+        0 4px 8px 0 rgba(199, 231, 255, 0.24),
+        0 6px 20px 0 rgba(199, 231, 255, 0.24);
+}
+
 
 header img,
 figure>img,
@@ -78,4 +97,16 @@ figure>img,
     box-shadow:
         0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.aws-div-icon span {
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 0.3em;
+    border: 1px solid silver;
+    text-shadow:
+        -1px -1px 0 white,
+        -1px 1px 0 white,
+        1px -1px 0 white,
+        1px 1px 0 white,
 }
