@@ -6,7 +6,9 @@ let salzburg = {
 };
 
 // Initialisieren der Karte
-let map = L.map('map').setView([salzburg.lat, salzburg.lng], 8);
+let map = L.map("map", {
+    fullscreenControl: true
+}).setView([salzburg.lat, salzburg.lng], 8);
 
 // Hinzufügen von Kacheln zur Karte
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,14 +19,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+//Maßstab
 L.control.scale({
     imperial: false
 }).addTo(map);
 
-
 //Thema-Layer Wandern-Route 
 let themaLayer = {
-    route: L.featureGroup().addTo(map),
+    route: L.featureGroup(),
 };
 
 // Hintergrundlayer
@@ -36,46 +38,15 @@ L.control.layers({
         L.tileLayer.provider("BasemapAT.overlay")
     ]),
 }, {
-    "GPX-Route": themaLayer.route.addTo(map)
+    "Wanderroute": themaLayer.route.addTo(map)
 })
     .addTo(map);
 
-
-//Maßstab
-L.control.scale({
-    imperial: false,
-}).addTo(map);
-
-
-
-// Hintergrundlayer eGrundkarte Tirol mit GPX-Route overlay
-L.control.layers({
-    "eGrundkarte Tirol Sommer": L.layerGroup([
-        eGrundkarteTirol.sommer,
-        eGrundkarteTirol.nomenklatur
-    ]).addTo(map),
-    "eGrundkarte Tirol Winter": L.layerGroup([
-        eGrundkarteTirol.winter,
-        eGrundkarteTirol.nomenklatur
-    ]),
-    "eGrundkarte Tirol Orthofoto": L.layerGroup([
-        eGrundkarteTirol.ortho,
-        eGrundkarteTirol.nomenklatur,
-    ])
-}, {
-    "GPX-Route": themaLayer.route.addTo(map)
-}).addTo(map);
-
-// Maßstab
-L.control.scale({
-    imperial: false,
-}).addTo(map);
 
 let controlElevation = L.control.elevation({
     time: false,
     elevationDiv: "#profile",
     height: 300,
-    theme: "wandern",
+    theme: "Wanderroute",
 }).addTo(map);
 controlElevation.load("data/almenweg.gpx");
-

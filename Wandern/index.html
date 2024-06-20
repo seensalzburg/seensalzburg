@@ -21,10 +21,19 @@
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
         rel='stylesheet' />
 
+    <!-- Leaflet elevation plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css" />
+    <script src="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.js"></script>
+
     <!-- eigene Stile und Hauptskript -->
     <link rel="stylesheet" href="main.css">
     <script defer src="main.js"></script>
     <script src="WIS_Seen/Seen.geojson"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--ÖBB Scotty-->
     <script type="text/javascript" src="https://fahrplan.oebb.at/hafas-res/js/suggest/FSuggest_v1.0.js"></script>
@@ -49,13 +58,40 @@
             <li><a href="https://seensalzburg.github.io/Wandern">Wandern</a></li>
     </nav>
     <main>
-        <h1>Der Almenweg</h1>
-        <h2>Wanderweg</h2>
-        <p>...</p>
+        <h1>Der Salzburger Almenweg</h1>
+        <h2>Mit 25 Etappen durch das Salzburger Land</h2>
+        <p><strong>350 Kilometer Genusswandern von Hütte zu Hütte im SalzburgerLand.</strong></p>
+        <p>Auf dem Salzburger Almenweg lässt man den Alltag im Tal zurück. Dieser Weitwanderweg zählt zu den schönsten
+            in den Alpen und erstreckt sich über 350 Kilometer in 25 Etappen. Er führt zu 120 Almen im Salzburger Pongau
+            und ist hervorragend beschildert. Der Weg folgt dem Symbol des „Blauen Enzians“ und verbindet bekannte
+            Ferienregionen: vom Tennengebirge über die Region Hochkönig, die Salzburger Sonnenterrasse, das Gasteinertal
+            und das Großarltal, bis hin zur Salzburger Sportwelt und Obertauern.</p>
+
+        <div class="summary">
+            <div class="summary-badge">
+                <i class="fas fa-walking"></i> 358,7 km
+            </div>
+            <div class="summary-badge">
+                <i class="fas fa-sort-amount-up-alt"></i> 20.158 hm
+            </div>
+            <div class="summary-badge">
+                <i class="fas fa-sort-amount-down-alt"></i> 20.158 hm
+            </div>
+            <div class="summary-badge">
+                <i class="fa-solid fa-heart-pulse"></i> mittelschwierig
+            </div>
+        </div>
 
         <article>
             <div id="map"></div>
+            <div id="profile"></div>
         </article>
+
+        <p>Die Karte bietet einen ersten Überblick zur Tour. Genauere Informationen und weitere Details zu den einzelnen
+            Etappen finden
+            Sie <a href="https://www.salzburgerland.com/de/die-25-salzburger-almenweg-etappen/#dmdtab=oax-tab1"
+                target="_blank">hier</a>.</p>
+
 
         <hr>
         <h3>Öffentliche Verkehrsmittel</h3>
