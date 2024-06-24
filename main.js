@@ -102,6 +102,5 @@ function onEachFeature(feature, layer) {
 }
 
 
-//Badestellen müssen noch richtig rein geladen werden
 //Kommastellen im Pop Up Seen auf 2 Kommas stellen
 //User Bild - Icon im Tab

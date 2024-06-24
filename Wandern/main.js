@@ -42,11 +42,11 @@ L.control.layers({
 })
     .addTo(map);
 
-
+//Höhenprofil
 let controlElevation = L.control.elevation({
     time: false,
     elevationDiv: "#profile",
-    height: 300,
+    height: 350,
     theme: "Wanderroute",
 }).addTo(map);
 controlElevation.load("data/track.gpx");
@@ -55,19 +55,8 @@ controlElevation.load("data/track.gpx");
 new L.GPX("data/track.gpx", {
     async: true,
     polyline_options: {
-        color: 'blue',
         weight: 3,
         opacity: 0.75,
         lineCap: 'round'
     },
-    marker_options: {
-        startIconUrl: '',
-        endIconUrl: '',
-        shadowUrl: ''
-    },
-    parseElements: ['track']
-}).on('loaded', function (e) {
-    map.fitBounds(e.target.getBounds());
-}).addTo(map).on('addline', function (e) {
-    controlElevation.addData(e.line);
 });
