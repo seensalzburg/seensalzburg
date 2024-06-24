@@ -43,7 +43,7 @@ fetch('WIS_Seen/Seen.geojson')
     .catch(error => console.error('Error loading the GeoJSON data:', error));
 
 //JSON in Themlayer Badestellen reinladen
-fetch('WIS_Badestellen/Badestellen.geojson')
+fetch('WIS_Badestellen.geojson')
     .then(response => response.json())
     .then(data => {
         // Füge die GeoJSON-Daten zur Karte hinzu
@@ -53,8 +53,8 @@ fetch('WIS_Badestellen/Badestellen.geojson')
             }).addTo(themaLayer.Badestellen);
     })
     .catch(error => console.error('Error loading the GeoJSON data:', error));
-// Hintergrundlayer
 
+// Hintergrundlayer
 L.control.layers({
     "BasemapAT Standard": L.tileLayer.provider("BasemapAT.basemap").addTo(map),
     "BasemapAT Gelände": L.tileLayer.provider("BasemapAT.terrain"),
