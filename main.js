@@ -98,6 +98,3 @@ function onEachFeature(feature, layer) {
     }
 }
 
-
-//Kommastellen im Pop Up Seen auf 2 Kommas stellen
-//User Bild - Icon im Tab
