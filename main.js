@@ -29,7 +29,6 @@ let themaLayer = {
     Badestellen: L.featureGroup().addTo(map),
 };
 
-
 //GEOJSON in Themalayer See reinladen
 fetch('WIS_Seen/Seen.geojson')
     .then(response => response.json())
@@ -76,7 +75,6 @@ L.control.scale({
 
 
 //Pop-up für Seen
-
 function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.NAME) {
         let popupContent =
@@ -89,7 +87,6 @@ function onEachFeature(feature, layer) {
         layer.bindPopup(popupContent);
     }
 }
-
 
 //Pop-up für Badestellen 
 function onEachFeature(feature, layer) {

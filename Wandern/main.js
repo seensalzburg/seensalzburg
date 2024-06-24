@@ -51,12 +51,5 @@ let controlElevation = L.control.elevation({
 }).addTo(map);
 controlElevation.load("data/track.gpx");
 
-// Laden und Anzeigen der GPX-Daten ohne zusätzliche Marker
-new L.GPX("data/track.gpx", {
-    async: true,
-    polyline_options: {
-        weight: 3,
-        opacity: 0.75,
-        lineCap: 'round'
-    },
-});
+// Laden und Anzeigen der GPX-Daten
+new L.GPX("data/track.gpx")
