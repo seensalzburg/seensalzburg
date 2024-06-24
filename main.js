@@ -92,16 +92,11 @@ function onEachFeature(feature, layer) {
 
 
 //Pop-up für Badestellen 
-
 function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.NAME) {
         let popupContent =
             `<h2>${feature.properties.NAME}</h2>
-            <ul>
-                <li> Größe in km2: ${feature.properties.FLAECHEKM2 || 'N/A'}</li>
-                <li>Höhe: ${feature.properties.HOEHE || 'unbekannt'}</li>
-                <li> Andere Bezeichnung: ${feature.properties.NAMEALIAS || 'N/A'}</li>
-                </ul>`;
+            `;
         layer.bindPopup(popupContent);
     }
 }
