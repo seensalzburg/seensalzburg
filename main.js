@@ -73,28 +73,44 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
-
 //Pop-up für Seen
-function onEachFeature(feature, layer) {
-    if (feature.properties && feature.properties.NAME) {
-        let popupContent =
-            `<h2>${feature.properties.NAME}</h2>
-            <ul>
-                <li> Größe in km2: ${feature.properties.FLAECHEKM2 || 'N/A'}</li>
-                <li>Höhe: ${feature.properties.HOEHE || 'unbekannt'}</li>
-                <li> Andere Bezeichnung: ${feature.properties.NAMEALIAS || 'N/A'}</li>
-                </ul>`;
-        layer.bindPopup(popupContent);
-    }
-}
+async function loadSeen(url) {
+    let response = await fetch(url);
+    let geojson = await response.json();
+    L.geoJSON(geojson, {
+        pointToLayer: function (feature, latlng) {
+        },
 
-//Pop-up für Badestellen 
-function onEachFeature(feature, layer) {
-    if (feature.properties && feature.properties.NAME) {
-        let popupContent =
-            `<h2>${feature.properties.NAME}</h2>
-            `;
-        layer.bindPopup(popupContent);
-    }
+        onEachFeature: function (feature, layer) {
+            let FLAECHEKM2 = feature.properties.FLAECHEKM2 ? feature.properties.FLAECHEKM2.toFixed(2) : 'unbekannt';
+            let HOEHE = feature.properties.HOEHE ? feature.properties.HOEHE.toFixed(2) : 'unbekannt';
+            layer.bindPopup(`
+    <h2>${feature.properties.NAME}</h2>
+    <ul>
+        <li> Größe in km²: ${FLAECHEKM2 || 'unbekannt'}</li>
+        <li> Höhe über dem Meeresspiegel in m: ${HOEHE || 'unbekannt'}</li>
+        <li> Andere Bezeichnung: ${feature.properties.NAMEALIAS || 'unbekannt'}</li>
+        </ul>
+        `)
+        }
+    }).addTo(themaLayer.Seen);
 }
+loadSeen("WIS_Seen/Seen.geojson")
 
+//Pop-up für Badestellen
+async function loadBadestellen(url) {
+    let response = await fetch(url);
+    let geojson = await response.json();
+    L.geoJSON(geojson, {
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng)
+        },
+
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(`
+    <h2>${feature.properties.NAME}</h2>
+        `)
+        }
+    }).addTo(themaLayer.Badestellen);
+}
+loadBadestellen("WIS_Badestellen.geojson")
