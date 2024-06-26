@@ -26,7 +26,7 @@ L.control.scale({
 
 //Thema-Layer Wandern-Route 
 let themaLayer = {
-    route: L.featureGroup(),
+    route: L.featureGroup().addTo(map),
 };
 
 // Hintergrundlayer
