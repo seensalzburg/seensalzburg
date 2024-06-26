@@ -25,7 +25,6 @@ L.control.scale({
 
 
 //Thema-Layer Seen 
-
 let themaLayer = {
     Seen: L.featureGroup().addTo(map),
     Badestellen: L.featureGroup().addTo(map),
@@ -68,12 +67,6 @@ L.control.layers({
     "Badestellen": themaLayer.Badestellen
 })
     .addTo(map);
-
-
-//Maßstab
-L.control.scale({
-    imperial: false,
-}).addTo(map);
 
 //Pop-up für Seen
 async function loadSeen(url) {
