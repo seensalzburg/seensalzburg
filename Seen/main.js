@@ -6,7 +6,9 @@ let salzburg = {
 };
 
 // Initialisieren der Karte
-let map = L.map('map').setView([salzburg.lat, salzburg.lng], 8);
+let map = L.map("map", {
+    fullscreenControl: true
+}).setView([salzburg.lat, salzburg.lng], 8);
 
 // Hinzufügen von Kacheln zur Karte
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
