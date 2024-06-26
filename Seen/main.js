@@ -108,7 +108,7 @@ async function loadBadestellen(url) {
 
         onEachFeature: function (feature, layer) {
             layer.bindPopup(`
-    <h2>${feature.properties.NAME}</h2>
+    <h3>${feature.properties.NAME}</h3>
         `)
         }
     }).addTo(themaLayer.Badestellen);
