@@ -26,7 +26,7 @@ L.control.scale({
 
 //Thema-Layer Wandern-Route 
 let themaLayer = {
-    route: L.featureGroup().addTo(map),
+    route: L.featureGroup(),
 };
 
 // Hintergrundlayer
@@ -39,8 +39,7 @@ L.control.layers({
     ]),
 }, {
     "Wanderroute": themaLayer.route.addTo(map)
-})
-    .addTo(map);
+}).addTo(map);
 
 //Höhenprofil
 let controlElevation = L.control.elevation({

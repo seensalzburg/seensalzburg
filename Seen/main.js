@@ -42,7 +42,7 @@ fetch('WIS_Seen/Seen.geojson')
     })
     .catch(error => console.error('Error loading the GeoJSON data:', error));
 
-//JSON in Themlayer Badestellen reinladen
+//JSON in Themalayer Badestellen reinladen
 fetch('WIS_Badestellen.geojson')
     .then(response => response.json())
     .then(data => {
